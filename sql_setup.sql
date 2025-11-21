@@ -1,0 +1,26 @@
+-- sql_setup.sql
+CREATE DATABASE IF NOT EXISTS uts_web1 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE uts_web1;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  email VARCHAR(150) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE infos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  summary VARCHAR(255) NOT NULL,
+  content TEXT NOT NULL,
+  image VARCHAR(255) DEFAULT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- dummy data
+INSERT INTO infos (title, summary, content) VALUES
+('Sejarah Perusahaan', 'Ringkasan singkat sejarah', 'PERUSAHAAN INI TELAH HANGUS TERBAKAR OLEH RAKYAT'),
+('Visi & Misi', 'Visi dan misi perusahaan', 'MENINGKATKAN KINERJA KARYAWAN DENGAN SUKA-SUKA PETINGGI PERUSAHAAN'),
+('Produk Unggulan', 'Produk terbaik kami', 'PRODUK UNGGULAN ADALAH MENUNJUKAN SEBUAH KEKEJAMAN PADA KERYAWAN');
